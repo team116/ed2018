@@ -7,7 +7,7 @@
 Lift::Lift() : PIDSubsystem("Lift", 1.0, 0.0, 0.0) {
     SetAbsoluteTolerance(0.2);
     GetPIDController()->SetContinuous(false);
-    frc::LiveWindow::GetInstance()->AddActuator("Lift", "PIDSubsystem Controller", GetPIDController());
+    LiveWindow::GetInstance()->AddActuator("Lift", "PIDSubsystem Controller", GetPIDController());
 
     MOTOR_LIFT = RobotMap::liftMOTOR_LIFT;
 

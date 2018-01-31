@@ -1,7 +1,7 @@
 #include "LEDLights.h"
 #include "../RobotMap.h"
 
-LEDLights::LEDLights() : frc::Subsystem("LEDLights") {
+LEDLights::LEDLights() : Subsystem("LEDLights") {
     lED = RobotMap::lEDLightsLED;
    }
 

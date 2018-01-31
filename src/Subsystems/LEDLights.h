@@ -2,12 +2,13 @@
 #define LEDLIGHTS_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include <Robot.h>
 
-class LEDLights: public frc::Subsystem {
+class LEDLights: public Subsystem {
 private:
 	// It's desirable that everything possible is private except
 	// for methods that implement subsystem capabilities
-	std::shared_ptr<frc::DigitalOutput> lED;
+	shared_ptr<DigitalOutput> lED;
 
 public:
 	LEDLights();

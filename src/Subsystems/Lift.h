@@ -4,16 +4,17 @@
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
 #include <PWMTalonSRX.h>
+#include <Robot.h>
 
-class Lift: public frc::PIDSubsystem {
+class Lift: public PIDSubsystem {
  public:
-	std::shared_ptr<PWMTalonSRX> MOTOR_LIFT;
+	shared_ptr<PWMTalonSRX> MOTOR_LIFT;
 
-	std::shared_ptr<frc::SpeedController> liftSpeedController;
+	shared_ptr<SpeedController> liftSpeedController;
 
-	std::shared_ptr<frc::DigitalInput> topLS;
-	std::shared_ptr<frc::DigitalInput> bottomLS;
-	std::shared_ptr<frc::AnalogPotentiometer> stringPot;
+	shared_ptr<DigitalInput> topLS;
+	shared_ptr<DigitalInput> bottomLS;
+	shared_ptr<AnalogPotentiometer> stringPot;
 
 	Lift();
 	double ReturnPIDInput() override;
