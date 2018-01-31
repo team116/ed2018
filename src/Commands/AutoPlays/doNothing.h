@@ -1,0 +1,9 @@
+#ifndef SRC_COMMANDS_AUTOPLAYS_DONOTHING_H_
+#define SRC_COMMANDS_AUTOPLAYS_DONOTHING_H_
+
+class doNothing {
+public:
+	doNothing();
+};
+
+#endif /* SRC_COMMANDS_AUTOPLAYS_DONOTHING_H_ */
