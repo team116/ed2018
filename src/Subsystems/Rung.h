@@ -2,13 +2,14 @@
 #define RUNG_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include <Robot.h>
 
-class Rung: public frc::Subsystem {
+class Rung: public Subsystem {
 private:
 	// It's desirable that everything possible is private except
 	// for methods that implement subsystem capabilities
 
-	std::shared_ptr<frc::Solenoid> BACK_BAR_SOLENOID;
+	shared_ptr<Solenoid> BACK_BAR_SOLENOID;
 
 public:
 	Rung();

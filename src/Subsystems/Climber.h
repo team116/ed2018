@@ -23,7 +23,7 @@ class Climber: public frc::PIDSubsystem {
 	std::shared_ptr<frc::DigitalInput> climberTopLS;
 	std::shared_ptr<frc::DigitalInput> climberBottomLS;
 	std::shared_ptr<frc::SpeedController> climberSpeedController;
-	std::shared_ptr<frc::AnalogPotentiometer> sTRING_POT;
+	std::shared_ptr<frc::AnalogPotentiometer> STRING_POT;
 
 	Climber();
 	double ReturnPIDInput() override;

@@ -62,7 +62,7 @@ OI::OI() {
     
 
     // SmartDashboard Buttons
-    SmartDashboard::PutData("holdClimber", new holdClimber());
+    SmartDashboard::PutData("holdClimber", new holdClimber(0));
     SmartDashboard::PutData("rotateCube", new rotateCube());
     SmartDashboard::PutData("releaseCube", new releaseCube());
     SmartDashboard::PutData("pickUpCube", new pickUpCube());
@@ -70,10 +70,10 @@ OI::OI() {
     SmartDashboard::PutData("moveLift", new moveLift());
     SmartDashboard::PutData("moveRight", new moveRight());
     SmartDashboard::PutData("moveLeft", new moveLeft());
-    SmartDashboard::PutData("movetoScaleTop", new movetoScaleTop());
-    SmartDashboard::PutData("movetoScaleNeutral", new movetoScaleNeutral());
-    SmartDashboard::PutData("movetoSwitchTop", new movetoSwitchTop());
-    SmartDashboard::PutData("movetoScaleBottom", new movetoScaleBottom());
+    SmartDashboard::PutData("movetoScaleTop", new movetoScaleTop(0));
+    SmartDashboard::PutData("movetoScaleNeutral", new movetoScaleNeutral(0));
+    SmartDashboard::PutData("movetoSwitchTop", new movetoSwitchTop(0));
+    SmartDashboard::PutData("movetoScaleBottom", new movetoScaleBottom(0));
     SmartDashboard::PutData("moveIntakeOut", new moveIntakeOut());
     SmartDashboard::PutData("closePiston", new closePiston());
     SmartDashboard::PutData("openPiston", new openPiston());

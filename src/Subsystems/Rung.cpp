@@ -1,7 +1,7 @@
 #include "Rung.h"
 #include "../RobotMap.h"
 
-Rung::Rung() : frc::Subsystem("Rung") {
+Rung::Rung() : Subsystem("Rung") {
     BACK_BAR_SOLENOID = RobotMap::rungBACK_BAR_SOLENOID;
 }
 

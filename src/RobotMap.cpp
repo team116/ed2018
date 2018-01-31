@@ -9,7 +9,9 @@
 #include <AnalogPotentiometer.h>
 #include <Encoder.h>
 #include <Gyro.h>
+#include <GyroBase.h>
 #include <RobotDrive.h>
+#include <Drive/DifferentialDrive.h>
 #include <PWMTalonSRX.h>
 #include <PWMVictorSPX.h>
 
