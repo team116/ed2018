@@ -8,6 +8,7 @@
 #include <SpeedControllerGroup.h>
 #include <AnalogPotentiometer.h>
 #include <Encoder.h>
+#include <Gyro.h>
 #include <RobotDrive.h>
 #include <PWMTalonSRX.h>
 #include <PWMVictorSPX.h>
@@ -25,6 +26,7 @@ shared_ptr<SpeedControllerGroup> RobotMap::mobilityrightSpeedController;
 shared_ptr<RobotDrive> RobotMap::mobilityRobotDrive41;
 shared_ptr<Encoder> RobotMap::mobilityleftEncoder;
 shared_ptr<Encoder> RobotMap::mobilityrightEncoder;
+shared_ptr<Gyro> RobotMap::mobilitygyro;
 
 shared_ptr<WPI_TalonSRX> RobotMap::liftMOTOR_LIFT;
 shared_ptr<SpeedController> RobotMap::liftliftSpeedController;
