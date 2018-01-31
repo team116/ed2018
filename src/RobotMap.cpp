@@ -12,20 +12,20 @@
 #include <PWMVictorSPX.h>
 
 std::shared_ptr<frc::SpeedController> RobotMap::mobilityRLspeedController;
-std::shared_ptr<PWMTalonSRX> RobotMap::mobilityREAR_LEFT_MOTOR;
+std::shared_ptr<WPI_TalonSRX> RobotMap::mobilityREAR_LEFT_MOTOR;
 std::shared_ptr<frc::SpeedController> RobotMap::mobilityFLspeedController;
-std::shared_ptr<PWMTalonSRX> RobotMap::mobilityFRONT_LEFT_MOTOR;
+std::shared_ptr<WPI_TalonSRX> RobotMap::mobilityFRONT_LEFT_MOTOR;
 std::shared_ptr<frc::SpeedControllerGroup> RobotMap::mobilityleftSpeedController;
 std::shared_ptr<frc::SpeedController> RobotMap::mobilityRRspeedController;
-std::shared_ptr<PWMTalonSRX> RobotMap::mobilityREAR_RIGHT_MOTOR;
+std::shared_ptr<WPI_TalonSRX> RobotMap::mobilityREAR_RIGHT_MOTOR;
 std::shared_ptr<frc::SpeedController> RobotMap::mobilityFRspeedController;
-std::shared_ptr<PWMTalonSRX> RobotMap::mobilityFRONT_RIGHT_MOTOR;
+std::shared_ptr<WPI_TalonSRX> RobotMap::mobilityFRONT_RIGHT_MOTOR;
 std::shared_ptr<frc::SpeedControllerGroup> RobotMap::mobilityrightSpeedController;
 std::shared_ptr<frc::RobotDrive> RobotMap::mobilityRobotDrive41;
 std::shared_ptr<frc::Encoder> RobotMap::mobilityleftEncoder;
 std::shared_ptr<frc::Encoder> RobotMap::mobilityrightEncoder;
 
-std::shared_ptr<PWMTalonSRX> RobotMap::liftMOTOR_LIFT;
+std::shared_ptr<WPI_TalonSRX> RobotMap::liftMOTOR_LIFT;
 std::shared_ptr<frc::SpeedController> RobotMap::liftliftSpeedController;
 std::shared_ptr<frc::DigitalInput> RobotMap::lifttopLS;
 std::shared_ptr<frc::DigitalInput> RobotMap::liftbottomLS;
@@ -38,7 +38,7 @@ std::shared_ptr<frc::Solenoid> RobotMap::armsY_AXIS_RIGHT_SOLENOID;
 
 std::shared_ptr<frc::Solenoid> RobotMap::rungBACK_BAR_SOLENOID;
 
-std::shared_ptr<PWMVictorSPX> RobotMap::climberMOTOR_CLIMBER;
+std::shared_ptr<WPI_VictorSPX> RobotMap::climberMOTOR_CLIMBER;
 std::shared_ptr<frc::DigitalInput> RobotMap::climberclimberTopLS;
 std::shared_ptr<frc::DigitalInput> RobotMap::climberclimberBottomLS;
 std::shared_ptr<frc::SpeedController> RobotMap::climberclimberSpeedController;
@@ -46,8 +46,8 @@ std::shared_ptr<frc::AnalogPotentiometer> RobotMap::climberSTRING_POT;
 
 std::shared_ptr<frc::DigitalOutput> RobotMap::lEDLightsLED;
 
-std::shared_ptr<PWMVictorSPX> RobotMap::conveyorBeltsMOTOR_LEFT_CON_BELT;
-std::shared_ptr<PWMVictorSPX> RobotMap::conveyorBeltsMOTOR_RIGHT_CON_BELT;
+std::shared_ptr<WPI_VictorSPX> RobotMap::conveyorBeltsMOTOR_LEFT_CON_BELT;
+std::shared_ptr<WPI_VictorSPX> RobotMap::conveyorBeltsMOTOR_RIGHT_CON_BELT;
 std::shared_ptr<frc::DifferentialDrive> RobotMap::conveyorBeltsDifferentialDrive2;
 std::shared_ptr<frc::DigitalInput> RobotMap::conveyorBeltsleftConBeltLS;
 std::shared_ptr<frc::DigitalInput> RobotMap::conveyorBeltsrightConBeltLS;
