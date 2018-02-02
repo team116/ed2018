@@ -7,7 +7,20 @@
 
 class OI {
 private:
-	shared_ptr<Mobility> Robot::mobility;
+	static OI* INSTANCE;
+
+	Log* log;
+	Mobility* mobility;
+	Lift* lift;
+	Arms* arms;
+	Rung* rung;
+	Climber* climber;
+	LEDLights* LEDlights;
+	ConveyorBelts* conveyorbelts;
+	Vision* vision;
+	OI* oi;
+
+	/*shared_ptr<Mobility> Robot::mobility;
 	shared_ptr<Lift> Robot::lift;
 	shared_ptr<Arms> Robot::arms;
 	shared_ptr<Rung> Robot::rung;
@@ -15,7 +28,7 @@ private:
 	shared_ptr<LEDLights> Robot::lEDLights;
 	shared_ptr<ConveyorBelts> Robot::conveyorBelts;
 	shared_ptr<Vision> Robot::vision;
-	unique_ptr<OI> Robot::oi;
+	unique_ptr<OI> Robot::oi;*/
 	
 	shared_ptr<Joystick> joystick1;
 	shared_ptr<JoystickButton> hold;
@@ -23,7 +36,7 @@ private:
 	shared_ptr<JoystickButton> switchTop;
 	shared_ptr<JoystickButton> scaleBottom;
 	shared_ptr<JoystickButton> joy_left_con_belt;
-	shared_ptr<JoystickButton> rung;
+	//shared_ptr<JoystickButton> rung;
 	shared_ptr<JoystickButton> closePistonButton;
 	shared_ptr<JoystickButton> openPistonButton;
 	shared_ptr<JoystickButton> scaleTop;

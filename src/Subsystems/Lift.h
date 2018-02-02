@@ -4,7 +4,7 @@
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
 #include <PWMTalonSRX.h>
-#include <Robot.h>
+//#include <Robot.h>
 
 class Lift: public PIDSubsystem {
  public:

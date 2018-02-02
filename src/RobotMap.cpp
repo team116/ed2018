@@ -8,8 +8,8 @@
 #include <SpeedControllerGroup.h>
 #include <AnalogPotentiometer.h>
 #include <Encoder.h>
-#include <Gyro.h>
-#include <GyroBase.h>
+#include <AnalogGyro.h>
+//#include <GyroBase.h>
 #include <RobotDrive.h>
 #include <Drive/DifferentialDrive.h>
 #include <PWMTalonSRX.h>
@@ -25,10 +25,10 @@ shared_ptr<WPI_TalonSRX> RobotMap::mobilityREAR_RIGHT_MOTOR;
 shared_ptr<SpeedController> RobotMap::mobilityFRspeedController;
 shared_ptr<WPI_TalonSRX> RobotMap::mobilityFRONT_RIGHT_MOTOR;
 shared_ptr<SpeedControllerGroup> RobotMap::mobilityrightSpeedController;
-shared_ptr<RobotDrive> RobotMap::mobilityRobotDrive41;
+shared_ptr<RobotDrive> RobotMap::mobilityRobotDrive;
 shared_ptr<Encoder> RobotMap::mobilityleftEncoder;
 shared_ptr<Encoder> RobotMap::mobilityrightEncoder;
-shared_ptr<Gyro> RobotMap::mobilitygyro;
+//shared_ptr<Gyro> RobotMap::mobilityanalogGyro;
 
 shared_ptr<WPI_TalonSRX> RobotMap::liftMOTOR_LIFT;
 shared_ptr<SpeedController> RobotMap::liftliftSpeedController;
@@ -93,15 +93,15 @@ void RobotMap::init() {
     mobilityrightSpeedController = make_shared<SpeedControllerGroup>(*mobilityRRspeedController, *mobilityFRspeedController  );
     lw->AddActuator("Mobility", "rightSpeedController", mobilityrightSpeedController);
     
-    mobilityRobotDrive41.reset(new RobotDrive(mobilityFLspeedController, mobilityRLspeedController,
+    mobilityRobotDrive.reset(new RobotDrive(mobilityFLspeedController, mobilityRLspeedController,
               mobilityFRspeedController, mobilityRRspeedController));
     
-    mobilityRobotDrive41->SetSafetyEnabled(true);
-    mobilityRobotDrive41->SetExpiration(0.1);
-    mobilityRobotDrive41->SetSensitivity(0.5);
-    mobilityRobotDrive41->SetMaxOutput(1.0);
+    mobilityRobotDrive->SetSafetyEnabled(true);
+    mobilityRobotDrive->SetExpiration(0.1);
+    mobilityRobotDrive->SetSensitivity(0.5);
+    mobilityRobotDrive->SetMaxOutput(1.0);
 
-    mobilityleftEncoder.reset(new Encoder(0, 1, false, frc::Encoder::k4X));
+    mobilityleftEncoder.reset(new Encoder(0, 1, false, Encoder::k4X));
     lw->AddSensor("Mobility", "leftEncoder", mobilityleftEncoder);
     mobilityleftEncoder->SetDistancePerPulse(1.0);
     mobilityleftEncoder->SetPIDSourceType(PIDSourceType::kRate);
@@ -110,6 +110,8 @@ void RobotMap::init() {
     lw->AddSensor("Mobility", "rightEncoder", mobilityrightEncoder);
     mobilityrightEncoder->SetDistancePerPulse(1.0);
     mobilityrightEncoder->SetPIDSourceType(PIDSourceType::kRate);
+
+   // mobilityanalogGyro.reset(new AnalogGyro(4, false, AnalogGyro))		needs right parameters
 
     liftMOTOR_LIFT.reset(new WPI_TalonSRX(6));
     
