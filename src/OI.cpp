@@ -8,6 +8,8 @@ OI::OI() {
     // Process operator interface input here.
     joy_con_belt_left.reset(new Joystick(5));
 
+    joy_con_belt_right.reset(new Joystick(6));
+
     buttonbox1.reset(new Joystick(4));
 
     joy_lift.reset(new Joystick(3));
@@ -15,6 +17,8 @@ OI::OI() {
     joy_climber.reset(new Joystick(2));
 
     joy_right.reset(new Joystick(1));
+
+    joy_left.reset(new Joystick(0));
 
     //connecting the buttons
     //hold.WhenPressed(new hold());
