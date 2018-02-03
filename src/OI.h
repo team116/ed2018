@@ -3,24 +3,16 @@
 
 #include "WPILib.h"
 #include <Robot.h>
+#include <Joystick.h>
+#include <Buttons/JoystickButton.h>
+#include "Commandfile.h"
 
 
 class OI {
 private:
 	static OI* INSTANCE;
 
-	Log* log;
-	Mobility* mobility;
-	Lift* lift;
-	Arms* arms;
-	Rung* rung;
-	Climber* climber;
-	LEDLights* LEDlights;
-	ConveyorBelts* conveyorbelts;
-	Vision* vision;
-	OI* oi;
-
-	/*shared_ptr<Mobility> Robot::mobility;
+	shared_ptr<Mobility> Robot::mobility;
 	shared_ptr<Lift> Robot::lift;
 	shared_ptr<Arms> Robot::arms;
 	shared_ptr<Rung> Robot::rung;
@@ -28,26 +20,32 @@ private:
 	shared_ptr<LEDLights> Robot::lEDLights;
 	shared_ptr<ConveyorBelts> Robot::conveyorBelts;
 	shared_ptr<Vision> Robot::vision;
-	unique_ptr<OI> Robot::oi;*/
+	unique_ptr<OI> Robot::oi;
 	
-	shared_ptr<Joystick> joystick1;
-	shared_ptr<JoystickButton> hold;
-	shared_ptr<JoystickButton> scaleNeutral;
-	shared_ptr<JoystickButton> switchTop;
-	shared_ptr<JoystickButton> scaleBottom;
-	shared_ptr<JoystickButton> joy_left_con_belt;
-	//shared_ptr<JoystickButton> rung;
-	shared_ptr<JoystickButton> closePistonButton;
-	shared_ptr<JoystickButton> openPistonButton;
-	shared_ptr<JoystickButton> scaleTop;
+	//joysticks
+	shared_ptr<Joystick> buttonbox1;
 	shared_ptr<Joystick> joy_con_belt_left;
-	shared_ptr<Joystick> joy_lift;
+	shared_ptr<Joystick> joy_con_belt_right;
 	shared_ptr<Joystick> joy_climber;
+	shared_ptr<Joystick> joy_lift;
 	shared_ptr<Joystick> joy_right;
 	shared_ptr<Joystick> joy_left;
 
+	//Buttons
+	JoystickButton hold{buttonbox1, 0};	//what joystick, what button #
+	JoystickButton closePistonButton{buttonbox1, 1};
+	JoystickButton openPistonButton{buttonbox1, 2};
+	JoystickButton movetoScaleBottomButton{buttonbox1, 3};
+	JoystickButton movetoScaleNeutralButton{buttonbox1, 4};
+	JoystickButton movetoScaleTopButton{buttonbox1, 5};
+	JoystickButton movetoSwitchTopButton{buttonbox1, 6};
+	JoystickButton pickUpCubeButton{buttonbox1, 7};
+	JoystickButton releaseCubeButton{buttonbox1, 8};
+	JoystickButton rotateCubeButton{buttonbox1, 9};
+
 public:
 	OI();
+	Joystick& GetJoystick();
 
 	void process();
 
@@ -56,6 +54,7 @@ public:
 	shared_ptr<Joystick> getjoy_climber();
 	shared_ptr<Joystick> getjoy_lift();
 	shared_ptr<Joystick> getjoy_con_belt_left();
+	shared_ptr<Joystick> getjoy_con_belt_right();
 	shared_ptr<Joystick> getJoystick1();
 
 };

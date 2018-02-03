@@ -1,65 +1,32 @@
 #include "OI.h"
 #include "SmartDashboard/SmartDashboard.h"
-#include "Commands/AutonomousCommand.h"
-#include "Commands/closePiston.h"
-#include "Commands/deployRung.h"
-#include "Commands/holdClimber.h"
-#include "Commands/moveIntakeOut.h"
-#include "Commands/moveLeft.h"
-#include "Commands/moveLift.h"
-#include "Commands/moveRight.h"
-#include "Commands/movetoScaleBottom.h"
-#include "Commands/movetoScaleNeutral.h"
-#include "Commands/movetoScaleTop.h"
-#include "Commands/movetoSwitchTop.h"
-#include "Commands/openPiston.h"
-#include "Commands/pickUpCube.h"
-#include "Commands/releaseCube.h"
-#include "Commands/rotateCube.h"
-#include "Commands/stopIntake.h"
+#include "Commands/AutoPlays/AutonomousCommand.h"
+#include "Commandfile.h"
 
 
 OI::OI() {
     // Process operator interface input here.
-    joystick1.reset(new Joystick(4));
-    
-    hold.reset(new JoystickButton(joystick1.get(), 1));
-    hold->WhenPressed(new holdClimber(0));
-
-    scaleNeutral.reset(new JoystickButton(joystick1.get(), 1));
-    scaleNeutral->WhenPressed(new movetoScaleNeutral(0));
-
-    switchTop.reset(new JoystickButton(joystick1.get(), 1));
-    switchTop->WhenPressed(new movetoSwitchTop(0));
-
-    scaleBottom.reset(new JoystickButton(joystick1.get(), 1));
-    scaleBottom->WhenPressed(new movetoScaleBottom(0));
-
-    joy_left_con_belt.reset(new JoystickButton(joystick1.get(), 1));
-    joy_left_con_belt->WhenPressed(new moveIntakeOut());
-
-    rung.reset(new JoystickButton(joystick1.get(), 1));
-    rung->WhenPressed(new deployRung());
-
-    closePistonButton.reset(new JoystickButton(joystick1.get(), 1));
-    closePistonButton->WhenPressed(new closePiston());
-
-    openPistonButton.reset(new JoystickButton(joystick1.get(), 1));
-    openPistonButton->WhenPressed(new openPiston());
-
-    scaleTop.reset(new JoystickButton(joystick1.get(), 1));
-    scaleTop->WhenPressed(new movetoScaleTop(0));
-
     joy_con_belt_left.reset(new Joystick(5));
-    
+
+    buttonbox1.reset(new Joystick(4));
+
     joy_lift.reset(new Joystick(3));
-    
+
     joy_climber.reset(new Joystick(2));
-    
+
     joy_right.reset(new Joystick(1));
-    
-    joy_left.reset(new Joystick(0));
-    
+
+    //connecting the buttons
+    //hold.WhenPressed(new hold());
+    closePistonButton.WhenPressed(new closePiston());
+    openPistonButton.WhenPressed(new openPiston());
+    movetoScaleBottomButton.WhenPressed(new movetoScaleBottom(520));
+    movetoScaleNeutralButton.WhenPressed(new movetoScaleNeutral(600));
+    movetoScaleTopButton.WhenPressed(new movetoScaleTop(720));
+    movetoSwitchTopButton.WhenPressed(new movetoSwitchTop(15));
+    pickUpCubeButton.WhenPressed(new pickUpCube());
+    releaseCubeButton.WhenPressed(new releaseCube());
+	rotateCubeButton.WhenPressed(new rotateCube());
 
     // SmartDashboard Buttons
     SmartDashboard::PutData("holdClimber", new holdClimber(0));
@@ -101,8 +68,11 @@ shared_ptr<Joystick> OI::getjoy_lift() {
 shared_ptr<Joystick> OI::getjoy_con_belt_left() {
    return joy_con_belt_left;
 }
+shared_ptr<Joystick> OI::getjoy_con_belt_right() {
+	return joy_con_belt_right;
+}
 
 shared_ptr<Joystick> OI::getJoystick1() {
-   return joystick1;
+   return buttonbox1;
 }
 
