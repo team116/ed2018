@@ -9,7 +9,7 @@ using namespace std;
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
-#include "Commands/AutonomousCommand.h"
+#include "Commands/AutoPlays/AutonomousCommand.h"
 #include "Commands/pickUpCube.h"
 #include "Commands/releaseCube.h"
 #include "Subsystems/Arms.h"

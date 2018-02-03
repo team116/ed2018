@@ -3,27 +3,26 @@ using namespace std;
 
 #include "Robot.h"
 
-
 shared_ptr<Mobility> Robot::mobility;
 shared_ptr<Lift> Robot::lift;
 shared_ptr<Arms> Robot::arms;
-shared_ptr<Rung> Robot::rung;
+//shared_ptr<Rung> Robot::rung;
 shared_ptr<Climber> Robot::climber;
 shared_ptr<LEDLights> Robot::lEDLights;
-shared_ptr<Vision> Robot::vision;
+//shared_ptr<Vision> Robot::vision;
 unique_ptr<OI> Robot::oi;
 
 void Robot::RobotInit() {
 	RobotMap::init();
 
-    mobility.reset(new Mobility());
+   // mobility.reset(new Mobility());
     lift.reset(new Lift());
     arms.reset(new Arms());
-    rung.reset(new Rung());
+   // rung.reset(new Rung());
     climber.reset(new Climber());
     lEDLights.reset(new LEDLights());
     conveyorBelts.reset(new ConveyorBelts());
-    vision.reset(new Vision());
+   // vision.reset(new Vision());
 
 	// This MUST be here. If the OI creates Commands (which it very likely
 	// will), constructing it during the construction of CommandBase (from

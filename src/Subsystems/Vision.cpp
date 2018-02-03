@@ -1,11 +1,13 @@
 #include "Vision.h"
+#include "DriverStation.h"
 
 Vision::Vision() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Vision::~Vision() {
-	// TODO Auto-generated destructor stub
+void Vision::process() {
+
 }
+
 
