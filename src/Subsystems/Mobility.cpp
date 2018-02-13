@@ -7,8 +7,8 @@
 #include <PIDOutput.h>
 #include <Commands/tankDriveWithJoysticks.h>
 
-const float MAX_SPEED = 10; //Find actual number
-const float PI = 3.14159265;
+const float MAX_SPEED = 0.75; //Find actual number
+const float PI = 3.1415;
 
 Mobility::Mobility() : PIDSubsystem("Mobility", 1.0, 0.0, 0.0) {
     SetAbsoluteTolerance(0.2);
@@ -43,6 +43,11 @@ Mobility::Mobility() : PIDSubsystem("Mobility", 1.0, 0.0, 0.0) {
     //                  to
     // Enable() - Enables the PID controller.
 
+   mobilityRobotDrive.SetSafetyEnabled(false);
+   mobilityRobotDrive.SetExpiration(0.1);
+   mobilityRobotDrive.SetMaxOutput(1.0);
+
+
 GetPIDController()->Enable();
 	REAR_LEFT_MOTOR->SetSafetyEnabled(true);
 	FRONT_LEFT_MOTOR->SetSafetyEnabled(true);
@@ -50,11 +55,14 @@ GetPIDController()->Enable();
 	FRONT_RIGHT_MOTOR->SetSafetyEnabled(true);
 
 	//Circumference in feet = 6 in / (12 in/ft) * PI
-	mobilityleftEncoder.SetDistancePerPulse(static_cast<double>(0.5 * PI) / 4000);
-	mobilityrightEncoder.SetDistancePerPulse(static_cast<double>(0.5 * PI) / 4000);
+	mobilityleftEncoder.SetDistancePerPulse(static_cast<double>(0.5 * PI) / 4090);
+	mobilityrightEncoder.SetDistancePerPulse(static_cast<double>(0.5 * PI) / 4090);
 
 	AddChild("Left Encoder", mobilityleftEncoder);
 	AddChild("Right Encoder", mobilityrightEncoder);
+}
+double Mobility::ReturnPIDInput() {
+	return leftEncoder.get();
 }
 
 void Mobility::UsePIDOutput(double output) {
@@ -67,8 +75,20 @@ void Mobility::UsePIDOutput(double output) {
 void Mobility::InitDefaultCommand() {
     // Set the default command for a subsystem here.
     SetDefaultCommand(new tankDriveWithJoysticks());
-
 }
+
+void Mobility::TankDrive(float left, float right) {
+	mobilityRobotDrive.TankDrive(left, right);
+}
+
+Encoder& Mobility::GetLeftEncoder() {
+	return leftEncoder;
+}
+
+Encoder& Mobility::GetRightEncoder() {
+	return rightEncoder();
+}
+//gonna want a getangle function for the gyro
 
 void Mobility::Log() {
 	SmartDashboard::PutNumber("Left Distance", mobilityleftEncoder.GetDistance());
@@ -78,9 +98,9 @@ void Mobility::Log() {
 		//SmartDashboard::PutNumber("Gyro", m_gyro.GetAngle());
 }
 
-void Mobility::Drive(float left, float right) {
+/*void Mobility::Drive(float left, float right) {
 	robotDrive.TankDrive(left, right);
-}
+}/*
 
 /*float Mobility::GetGyro() {
 	return gyro.GetAngle();

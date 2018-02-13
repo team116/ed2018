@@ -23,31 +23,39 @@ OI::OI() {
     //connecting the buttons
     //hold.WhenPressed(new hold());
     closePistonButton.WhenPressed(new closePiston());
+    SmartDashboard::PutData("closePiston", new closePiston());
+
     openPistonButton.WhenPressed(new openPiston());
+    SmartDashboard::PutData("openPiston", new openPiston());
+
     movetoScaleBottomButton.WhenPressed(new movetoScaleBottom(520));
+    SmartDashboard::PutData("movetoScaleBottom", new movetoScaleBottom(0));
+
     movetoScaleNeutralButton.WhenPressed(new movetoScaleNeutral(600));
+    SmartDashboard::PutData("movetoScaleNeutral", new movetoScaleNeutral(0));
+
     movetoScaleTopButton.WhenPressed(new movetoScaleTop(720));
+    SmartDashboard::PutData("movetoScaleTop", new movetoScaleTop(0));
+
     movetoSwitchTopButton.WhenPressed(new movetoSwitchTop(15));
+    SmartDashboard::PutData("movetoSwitchTop", new movetoSwitchTop(0));
+
     pickUpCubeButton.WhenPressed(new pickUpCube());
+    SmartDashboard::PutData("pickUpCube", new pickUpCube());
+
     releaseCubeButton.WhenPressed(new releaseCube());
+    SmartDashboard::PutData("rotateCube", new rotateCube());
+
 	rotateCubeButton.WhenPressed(new rotateCube());
+	 SmartDashboard::PutData("rotateCube", new rotateCube());
 
     // SmartDashboard Buttons
     SmartDashboard::PutData("holdClimber", new holdClimber(0));
-    SmartDashboard::PutData("rotateCube", new rotateCube());
-    SmartDashboard::PutData("releaseCube", new releaseCube());
-    SmartDashboard::PutData("pickUpCube", new pickUpCube());
     SmartDashboard::PutData("stopIntake", new stopIntake());
     SmartDashboard::PutData("moveLift", new moveLift());
     SmartDashboard::PutData("moveRight", new moveRight());
     SmartDashboard::PutData("moveLeft", new moveLeft());
-    SmartDashboard::PutData("movetoScaleTop", new movetoScaleTop(0));
-    SmartDashboard::PutData("movetoScaleNeutral", new movetoScaleNeutral(0));
-    SmartDashboard::PutData("movetoSwitchTop", new movetoSwitchTop(0));
-    SmartDashboard::PutData("movetoScaleBottom", new movetoScaleBottom(0));
     SmartDashboard::PutData("moveIntakeOut", new moveIntakeOut());
-    SmartDashboard::PutData("closePiston", new closePiston());
-    SmartDashboard::PutData("openPiston", new openPiston());
     SmartDashboard::PutData("deployRung", new deployRung());
     SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 }
