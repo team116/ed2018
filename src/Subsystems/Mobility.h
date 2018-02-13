@@ -1,8 +1,8 @@
 #ifndef MOBILITY_H
 #define MOBILITY_H
 
-#include <Robot.cpp>
 #include <Robot.h>
+#include <../Robot.h>
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
 #include <PWMTalonSRX.h>
@@ -47,13 +47,19 @@ class Mobility: public PIDSubsystem {
 	Mobility();
 	void process();
 
-	void InitDefaultCommand() override;
+	void InitDefaultCommand();
+
+	void TankDrive(float left, float right);
 
 	void Log();
 
-	void Drive(float left, float right);
+	//void Drive(float left, float right);
 
 	float GetGyro();
+
+	Encoder& GetLeftEncoder();
+
+	Encoder& GetRightEncoder();
 
 	void Reset();
 
@@ -62,21 +68,21 @@ class Mobility: public PIDSubsystem {
 	float GetDistanceToObstacle();
 
 private:
-	PWMTalonSRX mobilityRLspeedController{1};
-	PWMTalonSRX mobilityFLspeedController{2};
+	PWMTalonSRX mobilityRLspeedController{4};
+	PWMTalonSRX mobilityFLspeedController{3};
 	SpeedControllerGroup mobilityleftSpeedController{mobilityRLspeedController, mobilityFLspeedController};
 
-	PWMTalonSRX mobilityRRspeedController{3};
-	PWMTalonSRX mobilityFRspeedController{4};
+	PWMTalonSRX mobilityRRspeedController{5};
+	PWMTalonSRX mobilityFRspeedController{6};
 	SpeedControllerGroup mobilityrightSpeedController{mobilityRRspeedController, mobilityFRspeedController};
 
 	DifferentialDrive mobilityRobotDrive{mobilityleftSpeedController, mobilityrightSpeedController};
 
-	Encoder mobilityleftEncoder{1, 2};
-	Encoder mobilityrightEncoder{3, 4};
+	Encoder mobilityleftEncoder{1, 2, true};
+	Encoder mobilityrightEncoder{3, 4, false};
 	//AnalogInput {};
 	//AnalogGyro {};
-
+	double ReturnPIDInput();
 	void UsePIDOutput(double output);
 };
 
