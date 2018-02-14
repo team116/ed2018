@@ -4,6 +4,9 @@
 #include "ConveyorBelts.h"
 #include "../RobotMap.h"
 
+bool ISLEFTCONBELTON = true;
+bool ISRIGHTCONBELTON = true;
+
 ConveyorBelts::ConveyorBelts() : frc::Subsystem("ConveyorBelts") {
 
     MOTOR_LEFT_CON_BELT = RobotMap::conveyorBeltsMOTOR_LEFT_CON_BELT;
@@ -24,6 +27,23 @@ void ConveyorBelts::InitDefaultCommand() {
 void ConveyorBelts::Periodic() {
     // Put code here to be run every loop
 
+}
+bool ConveyorBelts::LeftConBeltIn(bool leftConBeltLS){
+    if(leftConBeltLS == ISLEFTCONBELTON){
+        RobotMap::conveyorBeltsleftConBeltSpeedController = 0;
+    }
+    else{
+        RobotMap::conveyorBeltsleftConBeltSpeedController = -5;
+    }
+}
+
+bool ConveyorBelts::RightConBeltIn(bool rightConBeltLS){
+    if(rightConBeltLS == ISRIGHTCONBELTON){
+        RobotMap::conveyorBeltsrightConBeltSpeedController = 0;
+    }
+    else{
+        RobotMap::conveyorBeltsrightConBeltSpeedController = -5;
+    }
 }
 
 

@@ -4,6 +4,11 @@
 #include "LiveWindow/LiveWindow.h"
 #include <PIDController.h>
 
+bool ISTOPON = true;
+bool ISBOTTOMON = true;
+const double LIFTSPEEDUP = .25;
+const double LIFTSPEEDDOWN = -.25;
+
 Lift::Lift() : PIDSubsystem("Lift", 1.0, 0.0, 0.0) {
     SetAbsoluteTolerance(0.2);
     GetPIDController()->SetContinuous(false);
@@ -44,4 +49,15 @@ void Lift::InitDefaultCommand() {
     // Set the default command for a subsystem here.
     // SetDefaultCommand(new MySpecialCommand());
 
+}
+bool LiftTopLimitSwitch(bool topLS){
+    if(topLS == ISTOPON){
+        shared_ptr<SpeedController> liftSpeedController = LIFTSPEEDUP;
+    }
+}
+
+bool LiftBottomLimitSwitch(bool bottomLS){
+    if(bottomLS == ISBOTTOMON){
+        shared_ptr<SpeedController> liftSpeedController = LIFTSPEEDDOWN;
+    }
 }
