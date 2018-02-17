@@ -1,7 +1,7 @@
 #ifndef SRC_COMMANDS_AUTOPLAYS_DEPRESSSWITCH_H_
 #define SRC_COMMANDS_AUTOPLAYS_DEPRESSSWITCH_H_
 
-#include <Mobility.h>
+#include <../Subsystems/Mobility.h>
 #include <Lift.h>
 #include <Arms.h>
 #include <ConveyorBelts.h>

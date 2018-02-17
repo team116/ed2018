@@ -1,7 +1,7 @@
 #ifndef SRC_COMMANDS_COMMANDFILE_H_
 #define SRC_COMMANDS_COMMANDFILE_H_
 
-#include <Robot.h>
+#include <../Robot.h>
 #include "closePiston.h"
 #include "openPiston.h"
 #include "deployRung.h"

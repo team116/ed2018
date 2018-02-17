@@ -4,7 +4,7 @@
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
 #include <PWMVictorSPX.h>
-#include <Robot.h>
+#include <../../Robot.h>
 
 class Climber: public PIDSubsystem {
  public:
