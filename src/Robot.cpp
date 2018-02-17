@@ -55,6 +55,25 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
+std::string gameData;
+gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+if(gameData.length() > 0) {
+	if(gameData[0] == 'L') {
+		//Put left auto code here
+		DriverStation::ReportError("Switch is on the left!");
+	}
+	else {
+	//Put right auto code here
+	DriverStation::ReportError("Switch is on the right!");
+	}
+}
+if (gameData[1] == 'L') {
+	DriverStation::ReportError("Scale is on the left!");
+}
+else {
+	DriverStation::ReportError("Scale is on the right!");
+}
+
 	autonomousCommand = chooser.GetSelected();
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Start();
