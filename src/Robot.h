@@ -20,6 +20,7 @@ using namespace std;
 #include "Subsystems/Mobility.h"
 #include "Subsystems/Rung.h"
 #include "Subsystems/Vision.h"
+#include "Subsystems/Hook.h"
 #include "OI.h"
 
 #include <Drive\DifferentialDrive.h>
@@ -39,6 +40,7 @@ public:
 	static shared_ptr<LEDLights> lEDLights;
 	static shared_ptr<ConveyorBelts> conveyorBelts;
 	static shared_ptr<Vision> vision;
+	static shared_ptr<Hook> hook;
 
 	void RobotInit() override;
 	void DisabledInit() override;

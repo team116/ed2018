@@ -3,10 +3,7 @@
 #include <Robot.h>
 
 Arms::Arms() : Subsystem("Arms") {
-    x_AXIS_LEFT_SOLENOID = RobotMap::armsX_AXIS_LEFT_SOLENOID;
-    x_AXIS_RIGHT_SOLENOID = RobotMap::armsX_AXIS_RIGHT_SOLENOID;
-    y_AXIS_LEFT_SOLENOID = RobotMap::armsY_AXIS_LEFT_SOLENOID;
-    y_AXIS_RIGHT_SOLENOID = RobotMap::armsY_AXIS_RIGHT_SOLENOID;
+
 }
 
 void Arms::InitDefaultCommand() {
@@ -22,7 +19,16 @@ void Arms::Periodic() {
 
 }
 
+void Arms::open() {
+	x_AXIS_SOLENOID->Set(false);	//needs to be tested
+}
 
+void Arms::close() {
+	x_AXIS_SOLENOID->Set(open);	//needs to be tested
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+bool Arms::isOpen() {
+	return is_open;
+}

@@ -1,8 +1,18 @@
-#ifndef MOBILITY_H
+//#ifndef MOBILITY_H
 #define MOBILITY_H
 
+#define REAR_LEFT_MOTOR 1
+#define REAR_RIGHT_MOTOR 2
+#define FRONT_LEFT_MOTOR 3
+#define FRONT_RIGHT_MOTOR 6
+#define mobilityRLspeedController 1
+#define mobilityFRspeedController 2
+#define mobilityFLspeedController 3
+#define mobilityRRspeedController 6
+
+
 #include <Robot.h>
-#include <../Robot.h>
+//#include <../Robot.h>
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
 #include <PWMTalonSRX.h>
@@ -18,17 +28,8 @@ class Mobility: public PIDSubsystem {
 	shared_ptr<SpeedControllerGroup> leftSpeedController;
 	shared_ptr<SpeedControllerGroup> rightSpeedController;
 
-	//Speed Controllers
-	shared_ptr<SpeedController> rLspeedController;
-	shared_ptr<SpeedController> fLspeedController;
-	shared_ptr<SpeedController> rRspeedController;
-	shared_ptr<SpeedController> fRspeedController;
-
-	//Motor Controllers
-	shared_ptr<PWMTalonSRX> REAR_LEFT_MOTOR;
-	shared_ptr<PWMTalonSRX> FRONT_LEFT_MOTOR;
-	shared_ptr<PWMTalonSRX> REAR_RIGHT_MOTOR;
-	shared_ptr<PWMTalonSRX> FRONT_RIGHT_MOTOR;
+	//Speed controller are at the top, defined
+	//Motor Controllers are at the top, defined
 
 	shared_ptr<RobotDrive> robotDrive;
 
@@ -53,6 +54,8 @@ class Mobility: public PIDSubsystem {
 
 	void Log();
 
+	void MoveDistance(float distance);
+
 	//void Drive(float left, float right);
 
 	float GetGyro();
@@ -68,22 +71,28 @@ class Mobility: public PIDSubsystem {
 	float GetDistanceToObstacle();
 
 private:
-	PWMTalonSRX mobilityRLspeedController{4};
-	PWMTalonSRX mobilityFLspeedController{3};
 	SpeedControllerGroup mobilityleftSpeedController{mobilityRLspeedController, mobilityFLspeedController};
 
-	PWMTalonSRX mobilityRRspeedController{5};
-	PWMTalonSRX mobilityFRspeedController{6};
 	SpeedControllerGroup mobilityrightSpeedController{mobilityRRspeedController, mobilityFRspeedController};
 
 	DifferentialDrive mobilityRobotDrive{mobilityleftSpeedController, mobilityrightSpeedController};
 
 	Encoder mobilityleftEncoder{1, 2, true};
-	Encoder mobilityrightEncoder{3, 4, false};
+	Encoder mobilityrightEncoder{3, 4, true};
 	//AnalogInput {};
 	//AnalogGyro {};
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);
+
+	//sensor toggles
+	bool use_left_drive_encoder;
+	bool use_right_drive_encoder;
+
+	//manual stuff
+	Timer* drive_distance_timer;
+	float drive_dist_time;
+	Timer* turn_degrees_timer;
+	float turn_deg_time;
 };
 
-#endif
+//#endif

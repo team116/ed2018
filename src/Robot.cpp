@@ -10,6 +10,7 @@ shared_ptr<Rung> Robot::rung;
 shared_ptr<Climber> Robot::climber;
 shared_ptr<LEDLights> Robot::lEDLights;
 shared_ptr<Vision> Robot::vision;
+shared_ptr<Hook>Robot::hook;
 unique_ptr<OI> Robot::oi;
 
 void Robot::RobotInit() {
