@@ -23,7 +23,7 @@ void Robot::RobotInit() {
    climber.reset(new Climber());
    lEDLights.reset(new LEDLights());
    conveyorBelts.reset(new ConveyorBelts());
-   // vision.reset(new Vision());
+   vision.reset(new Vision());
 
 	// This MUST be here. If the OI creates Commands (which it very likely
 	// will), constructing it during the construction of CommandBase (from
@@ -98,6 +98,8 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 	Log();
+	lift->Periodic();
+	oi->process();
 }
 
 void Robot::TestPeriodic() {}

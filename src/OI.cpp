@@ -3,6 +3,11 @@
 #include "Commands/AutoPlays/AutonomousCommand.h"
 #include "Commandfile.h"
 
+#define on = 0;
+#define off = 1;
+
+const float LIFT_SPEED = 0.5;
+
 
 OI::OI() {
     // Process operator interface input here.
@@ -12,7 +17,7 @@ OI::OI() {
 
     buttonbox1.reset(new Joystick(4));
 
-    joy_lift.reset(new Joystick(3));
+    joy_multistage.reset(new Joystick(3));
 
     joy_climber.reset(new Joystick(2));
 
@@ -21,8 +26,11 @@ OI::OI() {
     joy_left.reset(new Joystick(0));
 
     //connecting the buttons
+    switchXArms.WhenPressed(new pickUpCube());
+
+
     //hold.WhenPressed(new hold());
-    closePistonButton.WhenPressed(new closePiston());
+    /*closePistonButton.WhenPressed(new closePiston());
     SmartDashboard::PutData("closePiston", new closePiston());
 
     openPistonButton.WhenPressed(new openPiston());
@@ -40,14 +48,14 @@ OI::OI() {
     movetoSwitchTopButton.WhenPressed(new movetoSwitchTop(15));
     SmartDashboard::PutData("movetoSwitchTop", new movetoSwitchTop(0));
 
-    pickUpCubeButton.WhenPressed(new pickUpCube());
-    SmartDashboard::PutData("pickUpCube", new pickUpCube());
+    //pickUpCubeButton.WhenPressed(new pickUpCube());
+    //SmartDashboard::PutData("pickUpCube", new pickUpCube());
 
-    releaseCubeButton.WhenPressed(new releaseCube());
-    SmartDashboard::PutData("rotateCube", new rotateCube());
+    //releaseCubeButton.WhenPressed(new releaseCube());
+    //SmartDashboard::PutData("rotateCube", new rotateCube());
 
-	rotateCubeButton.WhenPressed(new rotateCube());
-	 SmartDashboard::PutData("rotateCube", new rotateCube());
+	deployRungButton.WhenPressed(new deployRung());
+	SmartDashboard::PutData("deployRung", new deployRung());
 
     // SmartDashboard Buttons
     SmartDashboard::PutData("holdClimber", new holdClimber(0));
@@ -56,8 +64,7 @@ OI::OI() {
     SmartDashboard::PutData("moveRight", new moveRight());
     SmartDashboard::PutData("moveLeft", new moveLeft());
     SmartDashboard::PutData("moveIntakeOut", new moveIntakeOut());
-    SmartDashboard::PutData("deployRung", new deployRung());
-    SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
+    SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());*/
 }
 
 
@@ -69,22 +76,46 @@ shared_ptr<Joystick> OI::getjoy_right() {
    return joy_right;
 }
 
-shared_ptr<Joystick> OI::getjoy_climber() {
-   return joy_climber;
-}
-
-shared_ptr<Joystick> OI::getjoy_lift() {
-   return joy_lift;
-}
-
-shared_ptr<Joystick> OI::getjoy_con_belt_left() {
-   return joy_con_belt_left;
-}
-shared_ptr<Joystick> OI::getjoy_con_belt_right() {
-	return joy_con_belt_right;
+shared_ptr<Joystick> OI::getjoy_multistage() {
+   return joy_multistage;
 }
 
 shared_ptr<Joystick> OI::getJoystick1() {
-   return buttonbox1;
+
 }
 
+void OI::process() {
+
+	//lift code
+	if (joy_multistage){
+
+	}
+	//grabber arms open/close code
+	while (switchXArms == "on") {
+		Robot::arms->open();
+	}
+
+	while (switchXArms == "off") {
+		Robot::arms->close();
+	}
+
+	//rung code
+	while (switchRung == "on") {
+		Robot::arms->open();
+	}
+	while (switchRung == "off") {
+		Robot::rung->close();
+	}
+
+#if false
+	//grabber arm code
+	//this section may or may not be better than the above button presses with commands
+	if (openPistonButton) {
+		Robot::arms->open();
+	}
+	else if (closePistonButton) {
+		Robot::arms->close();
+	}
+#endif
+
+}
