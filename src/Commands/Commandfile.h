@@ -18,8 +18,7 @@
 #include "releaseCube.h"
 #include "rotateCube.h"
 #include "stopIntake.h"
-#include "tankDriveWithJoysticks.h"
-#include "hold.h"
+#include "driveDistance.h"
 
 
 class Commandfile {

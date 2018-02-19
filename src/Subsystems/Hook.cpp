@@ -13,5 +13,5 @@ void Hook::Periodic() {
 }
 
 void Hook::ExtendHook() {
-	HOOK_SOLENOID->Set(true); //needs to be tested
+	HOOK_SOLENOID->Set(false); //needs to be tested
 }

@@ -5,6 +5,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "src/RobotMap.h"
+#include <Solenoid.h>
 
 class Hook: public Subsystem {
 private:

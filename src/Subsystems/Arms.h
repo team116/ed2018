@@ -33,4 +33,4 @@ public:
 	void disableCompressor();
 };
 
-#endif
+//#endif

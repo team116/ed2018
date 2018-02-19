@@ -24,7 +24,7 @@ void Arms::open() {
 }
 
 void Arms::close() {
-	x_AXIS_SOLENOID->Set(open);	//needs to be tested
+	x_AXIS_SOLENOID->Set(true);	//needs to be tested
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
