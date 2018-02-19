@@ -1,4 +1,4 @@
-#ifndef LIFT_H
+//#ifndef LIFT_H
 #define LIFT_H
 
 #define LEFT_LIFT_MOTOR 11
@@ -38,4 +38,4 @@ private:
 	bool use_string_pot;
 };
 
-#endif
+//#endif

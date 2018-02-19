@@ -1,8 +1,9 @@
 #include "Rung.h"
 #include "../RobotMap.h"
+#include "Robot.h"
 
 Rung::Rung() : Subsystem("Rung") {
-    BACK_BAR_SOLENOID = RobotMap::rungBACK_BAR_SOLENOID;
+
 }
 
 void Rung::InitDefaultCommand() {
@@ -15,6 +16,13 @@ void Rung::Periodic() {
 
 }
 
+void Rung::open() {
+	BACK_BAR_SOLENOID->Set(false);
+}
+
+void Rung::close() {
+
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
