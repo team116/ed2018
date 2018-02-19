@@ -4,18 +4,7 @@
 #include "ConveyorBelts.h"
 #include "../RobotMap.h"
 
-bool ISLEFTCONBELTON = true;
-bool ISRIGHTCONBELTON = true;
-
 ConveyorBelts::ConveyorBelts() : frc::Subsystem("ConveyorBelts") {
-
-    MOTOR_LEFT_CON_BELT = RobotMap::conveyorBeltsMOTOR_LEFT_CON_BELT;
-    MOTOR_RIGHT_CON_BELT = RobotMap::conveyorBeltsMOTOR_RIGHT_CON_BELT;
-    differentialDrive2 = RobotMap::conveyorBeltsDifferentialDrive2;
-    leftConBeltLS = RobotMap::conveyorBeltsleftConBeltLS;
-    rightConBeltLS = RobotMap::conveyorBeltsrightConBeltLS;
-    leftConBeltSpeedController = RobotMap::conveyorBeltsleftConBeltSpeedController;
-    rightConBeltSpeedController = RobotMap::conveyorBeltsrightConBeltSpeedController;
 
 }
 
@@ -26,25 +15,25 @@ void ConveyorBelts::InitDefaultCommand() {
 
 void ConveyorBelts::Periodic() {
     // Put code here to be run every loop
-
-}
-bool ConveyorBelts::LeftConBeltIn(bool leftConBeltLS){
-    if(leftConBeltLS == ISLEFTCONBELTON){
-        RobotMap::conveyorBeltsleftConBeltSpeedController = 0;
-    }
-    else{
-        RobotMap::conveyorBeltsleftConBeltSpeedController = -5;
-    }
+	if (leftConBeltLS == "on") {
+		MOTOR_LEFT_CON_BELT->Set(0.0);
+	}
+	if (rightConBeltLS == "of") {
+		MOTOR_RIGHT_CON_BELT->Set(0.0);
+	}
 }
 
-bool ConveyorBelts::RightConBeltIn(bool rightConBeltLS){
-    if(rightConBeltLS == ISRIGHTCONBELTON){
-        RobotMap::conveyorBeltsrightConBeltSpeedController = 0;
-    }
-    else{
-        RobotMap::conveyorBeltsrightConBeltSpeedController = -5;
-    }
+/*void ConveyorBelts::StopLeftConBelt() {
+	if (leftConBeltLS == "on") {
+		MOTOR_LEFT_CON_BELT->Set(0.0);
+	}
 }
+
+void ConveyorBelts::StopRightConBelt() {
+	if (rightConBeltLS == "of") {
+		MOTOR_RIGHT_CON_BELT->Set(0.0);
+	}
+}*/
 
 
 // Put methods for controlling this subsystem

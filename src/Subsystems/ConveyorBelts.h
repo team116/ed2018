@@ -23,8 +23,8 @@ public:
 	void InitDefaultCommand() override;
 	void Periodic() override;
 
-	bool LeftConBeltIn(bool leftConBeltLS);
-	bool RightConBeltIn(bool rightConBeltLS);
+	void StopLeftConBelt();
+	void StopRightConBelt();
 };
 
 //#endif

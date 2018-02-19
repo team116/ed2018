@@ -8,6 +8,7 @@ shared_ptr<Lift> Robot::lift;
 shared_ptr<Arms> Robot::arms;
 shared_ptr<Rung> Robot::rung;
 shared_ptr<Climber> Robot::climber;
+shared_ptr<ConveyorBelts> Robot::conveyorBelts;
 shared_ptr<LEDLights> Robot::lEDLights;
 shared_ptr<Vision> Robot::vision;
 shared_ptr<Hook>Robot::hook;
@@ -100,6 +101,7 @@ void Robot::TeleopPeriodic() {
 	Log();
 	lift->Periodic();
 	oi->process();
+	conveyorBelts->Periodic();
 }
 
 void Robot::TestPeriodic() {}
