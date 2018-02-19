@@ -1,10 +1,10 @@
 #ifndef SRC_SUBSYSTEMS_HOOK_H_
 #define SRC_SUBSYSTEMS_HOOK_H_
 
-#include <Robot.h>
+#include "../Robot.h"
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include "src/RobotMap.h"
+#include "../RobotMap.h"
 #include <Solenoid.h>
 
 class Hook: public Subsystem {

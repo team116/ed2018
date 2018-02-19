@@ -1,7 +1,7 @@
 #ifndef SRC_COMMANDS_AUTOPLAYS_DEPRESSSCALE_H_
 #define SRC_COMMANDS_AUTOPLAYS_DEPRESSSCALE_H_
 
-#include <../../Mobility.h>
+#include "../Mobility.h"
 #include <Lift.h>
 #include <Arms.h>
 #include <ConveyorBelts.h>

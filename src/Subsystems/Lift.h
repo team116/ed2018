@@ -10,8 +10,8 @@
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
 #include <PWMTalonSRX.h>
-#include <Robot.h>
-#include <Log.h>
+#include "../Robot.h"
+#include "../Log.h"
 #include <DigitalInput.h>
 
 class Lift: public PIDSubsystem {

@@ -5,7 +5,7 @@
  *      Author: Will
  */
 
-#include <../../Log.h>
+#include "Log.h"
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>

@@ -13,7 +13,7 @@
 
 
 #include "Commands/Subsystem.h"
-#include <../Subsystems/Lift.h>
+#include "../Subsystems/Lift.h"
 #include "../Robot.h"
 
 class movetoScaleNeutral: public frc::Command {

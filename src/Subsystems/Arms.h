@@ -1,10 +1,10 @@
 //#ifndef ARMS_H
 #define ARMS_H
 
-#include <Robot.h>
+#include "../Robot.h"
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include "RobotMap.h"
+#include "../RobotMap.h"
 #include <Solenoid.h>
 
 

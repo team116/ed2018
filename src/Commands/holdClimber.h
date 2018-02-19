@@ -15,7 +15,6 @@
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-#include <Robot.h>
 
 class holdClimber: public Command {
 public:

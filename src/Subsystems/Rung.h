@@ -3,8 +3,8 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include <Robot.h>
-#include "RobotMap.h"
+#include "../Robot.h"
+#include "../RobotMap.h"
 #include <DoubleSolenoid.h>
 
 class Rung: public Subsystem {
