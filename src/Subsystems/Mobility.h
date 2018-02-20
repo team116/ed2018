@@ -74,7 +74,7 @@ class Mobility: public PIDSubsystem {
 private:
 	SpeedControllerGroup mobilityleftSpeedController{MOBILITY_LEFT_REAR_MOTOR_CONTROLLER, MOBILITY_LEFT_FRONT_MOTOR_CONTROLLER};
 
-	SpeedControllerGroup mobilityrightSpeedController{mobilityRRspeedController, mobilityFRspeedController};
+	SpeedControllerGroup mobilityrightSpeedController{MOBILITY_RIGHT_REAR_MOTOR_CONTROLLER, MOBILITY_RIGHT_FRONT_MOTOR_CONTROLLER};
 
 	DifferentialDrive mobilityRobotDrive{mobilityleftSpeedController, mobilityrightSpeedController};
 
