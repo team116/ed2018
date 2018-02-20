@@ -5,11 +5,10 @@
 #define REAR_RIGHT_MOTOR 2
 #define FRONT_LEFT_MOTOR 3
 #define FRONT_RIGHT_MOTOR 6
-#define mobilityRLspeedController 1
-#define mobilityFRspeedController 2
-#define mobilityFLspeedController 3
-#define mobilityRRspeedController 6
-
+#define MOBILITY_LEFT_REAR_MOTOR_CONTROLLER 1
+#define MOBILITY_RIGHT_FRONT_MOTOR_CONTROLLER 2
+#define MOBILITY_LEFT_FRONT_MOTOR_CONTROLLER 3
+#define MOBILITY_RIGHT_REAR_MOTOR_CONTROLLER 6
 
 #include "../Robot.h"
 #include "Commands/PIDSubsystem.h"
@@ -20,6 +19,9 @@
 #include <Encoder.h>
 #include <AnalogGyro.h>
 #include <AnalogInput.h>
+
+using namespace std;
+using namespace frc;
 
 class Mobility: public PIDSubsystem {
  public:
@@ -70,7 +72,7 @@ class Mobility: public PIDSubsystem {
 	float GetDistanceToObstacle();
 
 private:
-	SpeedControllerGroup mobilityleftSpeedController{mobilityRLspeedController, mobilityFLspeedController};
+	SpeedControllerGroup mobilityleftSpeedController{MOBILITY_LEFT_REAR_MOTOR_CONTROLLER, MOBILITY_LEFT_FRONT_MOTOR_CONTROLLER};
 
 	SpeedControllerGroup mobilityrightSpeedController{mobilityRRspeedController, mobilityFRspeedController};
 
